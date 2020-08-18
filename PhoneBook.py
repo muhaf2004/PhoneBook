@@ -7,19 +7,23 @@
 # address - адрес, строка
 # {tel: [last_name, first_name, patronymic, address]}
 
+def input_data():
+    temp = list()
+    first_name = input("Введите имя: ")
+    last_name = input("Введите фамилию: ")
+    patronymic = input("Введите отчество: ")
+    address = input("Введите адрес: ")
+    temp.append(last_name)
+    temp.append(first_name)
+    temp.append(patronymic)
+    temp.append(address)
+    return temp
+
+
 phone_book = dict()
-value = list()
 
 tel = input("Введите номер телефона: ")
-first_name = input("Введите имя: ")
-last_name = input("Введите фамилию: ")
-patronymic = input("Введите отчество: ")
-address = input("Введите адрес: ")
-
-value.append(last_name)
-value.append(first_name)
-value.append(patronymic)
-value.append(address)
+value = input_data()
 
 phone_book[tel] = value
 
