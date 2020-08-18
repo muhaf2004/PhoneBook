@@ -7,6 +7,7 @@
 # address - адрес, строка
 # {tel: [last_name, first_name, patronymic, address]}
 
+from PhoneBook_lib import *
 def input_data():
     temp = list()
     first_name = input("Введите имя: ")
@@ -22,9 +23,25 @@ def input_data():
 
 phone_book = dict()
 
-tel = input("Введите номер телефона: ")
-value = input_data()
+welcome()
 
-phone_book[tel] = value
+menu()
 
-print(phone_book)
+
+
+choice = int(input("Введите режим работы: "))
+
+if choice == 1:
+    print(phone_book)
+elif choice == 2:
+    tel = input("Введите номер телефона: ")
+    value = input_data()
+    phone_book[tel] = value
+elif choice == 3:  # TODO Редактирование записи
+    print()
+elif choice == 4:  # TODO Удаление записи
+    print()
+elif choice == 0:  # TODO Выход
+    print()
+else:
+    print("Неправильный режим")
