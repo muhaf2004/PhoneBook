@@ -8,6 +8,7 @@
 # {tel: [last_name, first_name, patronymic, address]}
 
 import datetime
+import os
 
 date_time = datetime.datetime.now()
 
@@ -16,6 +17,28 @@ def log(msg):
     with open("PhoneBook.log", "a") as file:
         message = date_time.strftime("%Y-%m-%d %H:%M") + " : " + msg + "\n"
         file.write(message)
+
+
+def import_from_file(phone_book):
+    if os.path.exists("PhoneBook.csv"):
+        with open("PhoneBook.csv", "r") as file:
+            lines = file.readlines()
+            for line in lines:
+                elements = line.split(";")
+                tel = elements[0]
+                last_name = elements[1]
+                first_name = elements[2]
+                patronymic = elements[3]
+                address = elements[4]
+                value = list()
+                value.append(last_name)
+                value.append(first_name)
+                value.append(patronymic)
+                value.append(address)
+                phone_book[tel] = value
+        log("Импорт из файла")
+    else:
+        log("Файл для импорта не найден")
 
 
 def welcome():
@@ -81,7 +104,6 @@ def edit_record(phone_book):
     else:
         print("# Вы ввели неправильный номер #")
         log("Неудачная попытка редактирования записи с номером " + tel)
-
 
 
 def delete_record(phone_book):
