@@ -20,6 +20,8 @@ while True:
         export_to_file(phone_book)
     elif choice == 0:  # Выход из программы
         print("До свидания")
+        log("Выход из программы")
         break
     else:
         print("Неправильный режим")
+        log("Неправильный режим")
