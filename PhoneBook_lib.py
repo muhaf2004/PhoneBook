@@ -73,13 +73,16 @@ def input_data():
 
 
 def show(phone_book):
-    print("--- Телефонный справочник ---")
-    for tel in phone_book:
-        value = phone_book[tel]
-        temp = value[0] + " " + value[1] + " " + value[2] + ", " + value[3]
-        print(tel, ':', temp)
-    print("--- --- ---")
-    log("Вывод справочника на экран")
+    if len(phone_book) == 0:
+        print("# Телефонный справочник пуст #")
+    else:
+        print("--- Телефонный справочник ---")
+        for tel in phone_book:
+            value = phone_book[tel]
+            temp = value[0] + " " + value[1] + " " + value[2] + ", " + value[3]
+            print(tel, ':', temp)
+        print("--- --- ---")
+        log("Вывод справочника на экран")
 
 
 def input_record(phone_book):
