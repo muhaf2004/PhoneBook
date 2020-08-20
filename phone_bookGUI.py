@@ -26,6 +26,25 @@ def add():
         list_tel.insert(END, tel)
 
 
+def select_list_tel(event):
+    w = event.widget
+    i = int(w.curselection()[0])
+    tel = w.get(i)
+
+    value = phone_book[tel]
+    last_name = value[0]
+    first_name = value[1]
+    patronymic = value[2]
+    address = value[3]
+
+    clear()
+    input_tel.insert(0, tel)
+    input_last_name.insert(0, last_name)
+    input_first_name.insert(0, first_name)
+    input_patronymic.insert(0, patronymic)
+    input_address.insert(0, address)
+
+
 window = Tk()
 window.title("PhoneBook")
 window.geometry("500x250")
@@ -77,5 +96,7 @@ label_list_tel.grid(row=0, column=3)
 list_tel.grid(row=1, column=3, rowspan=4, pady=15)
 
 label_info.grid(row=5, column=0, columnspan=4, sticky="w")
+
+list_tel.bind('<<ListboxSelect>>', select_list_tel)
 
 window.mainloop()
